@@ -1,4 +1,7 @@
 import psycopg2
+import time
+
+start = time.time()
 
 conn = psycopg2.connect(
     host="localhost",
@@ -25,6 +28,12 @@ for row in rows:
     print(row)
 
 print("Queries Executed = 1")
+end = time.time()
+
+print(
+    "Time:",
+    end-start
+)
 
 cur.close()
 conn.close()
