@@ -1,0 +1,101 @@
+[
+  {
+    "student_id": 1,
+    "course_code": "CS101",
+    "semester": "2022-ODD",
+    "rating": 5,
+    "comments": "Excellent teaching.",
+    "tags": ["interactive", "clear"],
+    "submitted_at": "2022-11-30T10:15:00Z",
+    "attachments": [{ "filename": "notes.pdf", "size_kb": 240 }]
+  },
+  {
+    "student_id": 2,
+    "course_code": "CS101",
+    "semester": "2022-ODD",
+    "rating": 4,
+    "comments": "Good examples.",
+    "tags": ["practical", "structured"],
+    "submitted_at": "2022-11-28T09:00:00Z",
+    "attachments": [{ "filename": "lab.pdf", "size_kb": 180 }]
+  },
+  {
+    "student_id": 3,
+    "course_code": "CS101",
+    "semester": "2022-EVEN",
+    "rating": 3,
+    "comments": "Average course.",
+    "tags": ["moderate"],
+    "submitted_at": "2023-05-20T11:00:00Z"
+  },
+  {
+    "student_id": 4,
+    "course_code": "CS102",
+    "semester": "2022-ODD",
+    "rating": 5,
+    "comments": "Loved the labs.",
+    "tags": ["hands-on", "interesting"],
+    "submitted_at": "2022-12-01T14:00:00Z",
+    "attachments": [{ "filename": "assignment.pdf", "size_kb": 300 }]
+  },
+  {
+    "student_id": 5,
+    "course_code": "CS102",
+    "semester": "2022-EVEN",
+    "rating": 4,
+    "comments": "Well organized.",
+    "tags": ["clear"],
+    "submitted_at": "2023-04-10T10:30:00Z",
+    "attachments": [{ "filename": "report.pdf", "size_kb": 210 }]
+  },
+  {
+    "student_id": 6,
+    "course_code": "EC101",
+    "semester": "2022-ODD",
+    "rating": 2,
+    "comments": "Needs improvement.",
+    "tags": ["difficult"],
+    "submitted_at": "2022-11-25T08:00:00Z",
+    "attachments": [{ "filename": "feedback.doc", "size_kb": 120 }]
+  },
+  {
+    "student_id": 7,
+    "course_code": "ME101",
+    "semester": "2022-EVEN",
+    "rating": 5,
+    "comments": "Excellent practical sessions.",
+    "tags": ["practical"],
+    "submitted_at": "2023-03-15T13:00:00Z",
+    "attachments": [{ "filename": "review.pdf", "size_kb": 260 }]
+  },
+  {
+    "student_id": 8,
+    "course_code": "CS103",
+    "semester": "2022-ODD",
+    "rating": 4,
+    "comments": "Good instructor.",
+    "tags": ["engaging"],
+    "submitted_at": "2022-11-18T16:00:00Z",
+    "attachments": [{ "filename": "guide.pdf", "size_kb": 150 }]
+  },
+  {
+    "student_id": 9,
+    "course_code": "CS103",
+    "semester": "2022-EVEN",
+    "rating": 3,
+    "comments": "Okay course.",
+    "tags": ["average"],
+    "submitted_at": "2023-05-02T15:00:00Z",
+    "attachments": [{ "filename": "summary.pdf", "size_kb": 170 }]
+  },
+  {
+    "student_id": 10,
+    "course_code": "CE101",
+    "semester": "2022-ODD",
+    "rating": 5,
+    "comments": "Highly recommended.",
+    "tags": ["excellent"],
+    "submitted_at": "2022-11-10T10:00:00Z",
+    "attachments": [{ "filename": "design.pdf", "size_kb": 280 }]
+  }
+]
