@@ -1,3 +1,4 @@
+from sqlalchemy.orm import joinedload
 import urllib.parse
 from sqlalchemy import (
     Column,
@@ -17,7 +18,7 @@ from sqlalchemy.orm import (
 password = urllib.parse.quote_plus("Afzal@2006")
 
 engine = create_engine(
-    f"postgresql+psycopg2://postgres:{password}@localhost/college_db_orm"
+    f"postgresql+psycopg2://postgres:{password}@localhost/college_db_orm",echo= True
 )
 
 Base = declarative_base()
