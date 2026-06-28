@@ -1,0 +1,128 @@
+
+In [17]: Course.objects.all()
+Out[17]: <QuerySet [<Course: Python Programming>, <Course: Database Systems>, <Course: Artificial Intelligence>, <Course: Digital Electronics>]>
+
+In [18]: Course.objects.first().department
+Out[18]: <Department: Computer Science>
+
+In [19]: Course.objects.filter(department__name="Computer Science")
+Out[19]: <QuerySet [<Course: Python Programming>, <Course: Database Systems>, <Course: Artificial Intelligence>]>
+
+In [20]: Course.objects.filter(department__name="Electronics")
+Out[20]: <QuerySet [<Course: Digital Electronics>]>
+
+In [21]: Course.objects.filter(credits=4)
+Out[21]: <QuerySet [<Course: Python Programming>, <Course: Artificial Intelligence>, <Course: Digital Electronics>]>
+
+In [22]: Course.objects.get(code="CS101")
+Out[22]: <Course: Python Programming>
+
+In [23]: Department.objects.annotate(course_count=Count("course"))
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Cell In[23], line 1
+----> 1 Department.objects.annotate(course_count=Count("course"))
+
+NameError: name 'Count' is not defined
+
+In [24]: from django.db.models import Count, F
+
+In [25]: Department.objects.annotate(course_count=Count("course"))
+Out[25]: <QuerySet [<Department: Computer Science>, <Department: Electronics>]>
+
+In [26]: departments = Department.objects.annotate(course_count=Count("course"))
+    ...: 
+    ...: for dept in departments:
+    ...:     print(dept.name, dept.course_count)
+    ...: 
+Computer Science 3
+Electronics 1
+
+In [27]: Student.objects.select_related("department")
+Out[27]: <QuerySet []>
+
+In [28]: students = Student.objects.select_related("department")
+
+In [29]: for student in students:
+    ...:     print(student.first_name, "-", student.department.name)
+    ...: 
+
+In [30]: for student in students:
+    ...:     print(student.first_name, "-", student.department.name)
+    ...: 
+
+In [31]: Department.objects.update(
+    ...:     budget=F("budget") * 1.10
+    ...: )
+Out[31]: 2
+
+In [32]: Department.objects.values("name", "budget")
+Out[32]: <QuerySet [{'name': 'Computer Science', 'budget': Decimal('5500000.00')}, {'name': 'Electronics', 'budget': Decimal('3850000.00')}]>
+
+In [33]: Student.objects.all()
+Out[33]: <QuerySet []>
+
+In [34]: cse = Department.objects.get(name="Computer Science")
+    ...: ece = Department.objects.get(name="Electronics")
+
+In [35]: s1 = Student.objects.create(
+    ...:     first_name="Muhammad",
+    ...:     last_name="Afzal",
+    ...:     email="afzal@example.com",
+    ...:     department=cse,
+    ...:     enrollment_year=2024
+    ...: )
+
+In [36]: s2 = Student.objects.create(
+    ...:     first_name="Rahul",
+    ...:     last_name="Sharma",
+    ...:     email="rahul@example.com",
+    ...:     department=cse,
+    ...:     enrollment_year=2024
+    ...: )
+
+In [37]: s3 = Student.objects.create(
+    ...:     first_name="Priya",
+    ...:     last_name="Singh",
+    ...:     email="priya@example.com",
+    ...:     department=ece,
+    ...:     enrollment_year=2025
+    ...: )
+
+In [38]: s4 = Student.objects.create(
+    ...:     first_name="Arun",
+    ...:     last_name="Kumar",
+    ...:     email="arun@example.com",
+    ...:     department=ece,
+    ...:     enrollment_year=2025
+    ...: )
+
+In [39]: v
+---------------------------------------------------------------------------
+NameError                                 Traceback (most recent call last)
+Cell In[39], line 1
+----> 1 v
+
+NameError: name 'v' is not defined
+
+In [40]: s5 = Student.objects.create(
+    ...:     first_name="Sneha",
+    ...:     last_name="Reddy",
+    ...:     email="sneha@example.com",
+    ...:     department=cse,
+    ...:     enrollment_year=2024
+    ...: )
+
+In [41]: Student.objects.all()
+Out[41]: <QuerySet [<Student: Muhammad Afzal>, <Student: Rahul Sharma>, <Student: Priya Singh>, <Student: Arun Kumar>, <Student: Sneha Reddy>]>
+
+In [42]: students = Student.objects.select_related("department")
+
+In [43]: for student in students:
+    ...:     print(student.first_name, "-", student.department.name)
+    ...: 
+Muhammad - Computer Science
+Rahul - Computer Science
+Priya - Electronics
+Arun - Electronics
+Sneha - Computer Science
