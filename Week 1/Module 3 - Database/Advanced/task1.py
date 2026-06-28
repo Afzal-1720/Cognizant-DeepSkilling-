@@ -7,6 +7,7 @@ from sqlalchemy import (
     ForeignKey,
     Date,
     Numeric,
+    Boolean,
     create_engine
 )
 
@@ -86,6 +87,11 @@ class Student(Base):
     enrollments = relationship(
         "Enrollment",
         back_populates="student"
+    )
+    is_active = Column(
+    Boolean,
+    nullable=False,
+    default=True
     )
 
 
@@ -188,13 +194,42 @@ class Professor(Base):
         "Department",
         back_populates="professors"
     )
+class CourseSchedule(Base):
+
+    __tablename__ = "course_schedules"
+
+    schedule_id = Column(
+        Integer,
+        primary_key=True
+    )
+
+    course_id = Column(
+        Integer,
+        ForeignKey("courses.course_id")
+    )
+
+    day_of_week = Column(
+        String(20),
+        nullable=False
+    )
+
+    start_time = Column(
+        String(10),
+        nullable=False
+    )
+
+    end_time = Column(
+        String(10),
+        nullable=False
+    )
+
+    course = relationship("Course")
 
 
 
-Base.metadata.create_all(engine)
-
-print("All tables created successfully!")
-
+if __name__ == "__main__":
+    Base.metadata.create_all(engine)
+    print("All tables created successfully!")
 
 #C:\Users\fmdaf\Documents\Cognizant Deepskilling 2027>C:\Users\fmdaf\AppData\Local\Microsoft\WindowsApps\python3.13.exe "c:/Users/fmdaf/Documents/Cognizant Deepskilling 2027/Week 1/Module 3 - Database/Advanced/task1.py"
 #All tables created successfully!
