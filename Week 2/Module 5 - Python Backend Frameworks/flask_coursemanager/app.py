@@ -1,5 +1,7 @@
 from flask import Flask , jsonify
 from config import Config
+from extensions import db, migrate
+from courses import models
 
 
 def create_app():
@@ -7,6 +9,9 @@ def create_app():
 
     app.config.from_object(Config)
 
+    db.init_app(app)
+    migrate.init_app(app, db)
+    from courses import models
     from courses.routes import courses_bp
 
     app.register_blueprint(courses_bp)

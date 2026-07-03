@@ -1,4 +1,6 @@
 from flask import Blueprint, jsonify, request
+from extensions import db
+from .models import Course
 
 courses_bp = Blueprint(
     "courses",
@@ -6,7 +8,7 @@ courses_bp = Blueprint(
     url_prefix="/api/courses"
 )
 
-courses = []
+
 
 
 def make_response_json(data, status_code=200):
@@ -16,86 +18,105 @@ def make_response_json(data, status_code=200):
     }), status_code
 
 
+
+
+
 @courses_bp.route("/", methods=["GET"])
 def get_courses():
-    return make_response_json(courses)
 
+    courses = Course.query.all()
+
+    data = [
+        course.to_dict()
+        for course in courses
+    ]
+
+    return make_response_json(data)
+
+@courses_bp.route("/<int:id>", methods=["GET"])
+def get_course(id):
+
+    course = Course.query.get_or_404(id)
+
+    return make_response_json(
+        course.to_dict()
+    )
 
 @courses_bp.route("/", methods=["POST"])
 def create_course():
 
     data = request.get_json()
 
-    # Check if JSON was sent
-    if data is None:
-        return jsonify({
-            "status": "error",
-            "message": "Request body must be JSON"
-        }), 400
+    required_fields = [
+        "name",
+        "code",
+        "credits",
+        "department_id"
+    ]
 
-    # Required fields
-    required_fields = ["name", "code", "credits"]
-
-    # Validate required fields
     for field in required_fields:
         if field not in data:
             return jsonify({
-                "status": "error",
-                "message": f"{field} is required"
-            }), 400
+                "status":"error",
+                "message":f"{field} is required"
+            }),400
 
-    # Auto-generate an ID
-    data["id"] = len(courses) + 1
+    course = Course(
+        name=data["name"],
+        code=data["code"],
+        credits=data["credits"],
+        department_id=data["department_id"]
+    )
 
-    courses.append(data)
+    db.session.add(course)
 
-    return make_response_json(data, 201)
+    db.session.commit()
 
-@courses_bp.route("/<int:course_id>", methods=["GET"])
+    return make_response_json(
+        course.to_dict(),
+        201
+    )
 
-def get_course(course_id):
+@courses_bp.route("/<int:id>", methods=["PUT"])
+def update_course(id):
 
-    for course in courses:
-        if course["id"] == course_id:
-            return make_response_json(course)
-
-    return jsonify({
-        "status": "error",
-        "message": "Course not found"
-    }), 404
-
-@courses_bp.route("/<int:course_id>", methods=["PUT"])
-def update_course(course_id):
+    course = Course.query.get_or_404(id)
 
     data = request.get_json()
 
-    for course in courses:
-        if course["id"] == course_id:
-            course["name"] = data.get("name", course["name"])
-            course["code"] = data.get("code", course["code"])
-            course["credits"] = data.get("credits", course["credits"])
+    course.name = data.get("name", course.name)
+    course.code = data.get("code", course.code)
+    course.credits = data.get("credits", course.credits)
 
-            return make_response_json(course)
+    db.session.commit()
 
-    return jsonify({
-        "status": "error",
-        "message": "Course not found"
-    }), 404
+    return make_response_json(
+        course.to_dict()
+    )
 
+@courses_bp.route("/<int:id>", methods=["DELETE"])
+def delete_course(id):
 
-@courses_bp.route("/<int:course_id>", methods=["DELETE"])
-def delete_course(course_id):
+    course = Course.query.get_or_404(id)
 
-    for course in courses:
-        if course["id"] == course_id:
-            courses.remove(course)
+    db.session.delete(course)
 
-            return make_response_json({
-                "message": "Course deleted"
-            })
+    db.session.commit()
 
-    return jsonify({
-        "status": "error",
-        "message": "Course not found"
-    }), 404
+    return make_response_json({
+        "message":"Course deleted"
+    })
 
+@courses_bp.route("/<int:id>/students", methods=["GET"])
+def get_course_students(id):
+
+    course = Course.query.get_or_404(id)
+
+    students = []
+
+    for enrollment in course.enrollments:
+        students.append(
+            enrollment.student.to_dict()
+        )
+
+    return make_response_json(students)

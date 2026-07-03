@@ -1,8 +1,9 @@
 class Config:
-    SECRET_KEY = "my-secret-key"
 
-    SQLALCHEMY_DATABASE_URI = "sqlite:///coursemanager.db"
+    SECRET_KEY="my-secret-key"
 
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SQLALCHEMY_DATABASE_URI="sqlite:///coursemanager.db"
 
-    DEBUG = True
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+
+    DEBUG=True
