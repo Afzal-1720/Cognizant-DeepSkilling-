@@ -1,6 +1,20 @@
 from pydantic import BaseModel
 from typing import Optional
 
+from pydantic import EmailStr
+
+from pydantic import EmailStr
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str
+
+class UserRegister(BaseModel):
+
+    email: EmailStr
+
+    password: str
+
 
 class CourseCreate(BaseModel):
     name: str
@@ -25,3 +39,8 @@ class CourseResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class EnrollmentCreate(BaseModel):
+    student_id: int
+    course_id: int
+    student_email: str
