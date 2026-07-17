@@ -57,58 +57,43 @@
         <p>Semester</p>
     </div>
 
-</section>
+</section>   
+<section id="courses">
 
-        <section id="courses">
-
-            <h2>Available Courses</h2>
-
-            <article class="course-card">
-
-                <h3>Python Programming</h3>
-
-                <p>
-                    Learn Python from basics to advanced.
-                </p>
-
-            </article>
-
-            <article class="course-card">
-
-                <h3>Web Development</h3>
-
-              <section id="courses">
-
+          
+    
     <h2>Available Courses</h2>
+    <p id="loading"></p>
+    <input
+    type="text"
+    id="search-courses"
+    placeholder="Search courses..."
+>
+
+<button id="sort-btn">
+    Sort By Credits
+</button>
+
+<div class="course-grid"></div>
+
+<p id="selected-course"></p>
+
+<p id="total-credits"></p>
+
 
     <div class="course-grid">
 
-        <article class="course-card">
-            <h3>Python Programming</h3>
-            <p>Learn Python from basics to advanced.</p>
-        </article>
-
-        <article class="course-card">
-            <h3>Web Development</h3>
-            <p>HTML, CSS and JavaScript fundamentals.</p>
-        </article>
-
-        <article class="course-card">
-            <h3>Database Systems</h3>
-            <p>Learn SQL and Database concepts.</p>
-        </article>
-
-        <article class="course-card">
-            <h3>Java Programming</h3>
-            <p>Master Core Java and Object-Oriented Programming.</p>
-        </article>
-
-        <article class="course-card">
-            <h3>Data Structures</h3>
-            <p>Learn Arrays, Linked Lists, Trees and Graphs.</p>
-        </article>
+        
 
     </div>
+      <p id="total-credits"></p>
+
+</section>
+<section id="notifications">
+
+    <h2>Notifications</h2>
+    <p id="loading-posts"></p>
+    <div id="notification-list"></div>
 
 </section>
 
@@ -119,6 +104,8 @@
         <p>&copy; 2026 Student Portal. All Rights Reserved.</p>
 
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="app.js"></script>
 
 </body>
 
