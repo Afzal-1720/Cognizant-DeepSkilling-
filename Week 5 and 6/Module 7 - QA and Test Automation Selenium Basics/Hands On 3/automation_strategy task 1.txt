@@ -1,0 +1,221 @@
+Test Automation Process, Lifecycle & Framework Types
+Task 1: Automation Decision and Test Case Selection
+1. Criteria for Deciding Whether a Test Case Should Be Automated
+
+Automation should be used for test cases that provide long-term value and are executed frequently. The following are five important criteria.
+
+Criterion 1: Repetitive Test Cases
+
+Tests that are executed repeatedly are good candidates for automation.
+
+Application to the Scenario:
+
+Testing the POST /api/courses/ endpoint after every code change is repetitive, so it should be automated.
+
+Criterion 2: Regression Testing
+
+Regression tests verify that existing functionality still works after new changes.
+
+Application to the Scenario:
+
+After adding a new feature, verify that POST /api/courses/ still returns HTTP 201 Created with valid input.
+
+Criterion 3: Stable Functionality
+
+Automation is suitable for features that rarely change.
+
+Application to the Scenario:
+
+The Course Creation API is a core feature and its functionality remains stable, making it a good automation candidate.
+
+Criterion 4: Data-Driven Testing
+
+When the same test is executed using multiple input values, automation saves significant effort.
+
+Application to the Scenario:
+
+Test the Course API with:
+
+Valid course names
+Empty course names
+Duplicate course codes
+Maximum character limits
+Criterion 5: High Business Impact
+
+Business-critical features should always be automated.
+
+Application to the Scenario:
+
+Creating courses is a core business function. If it fails, users cannot add new courses. Therefore, it should be automated.
+
+2. Test Case Selection
+Test Case	Decision	Reason
+Regression test for all CRUD endpoints after every code change	Automate	Executed frequently and suitable for regression testing.
+Exploratory testing of a new search feature	Manual	Requires human observation and creativity.
+Performance test with 100 concurrent users calling GET /api/courses/	Automate	Performance testing requires automation tools to simulate multiple users.
+UI test for the login form	Automate	Login is a stable and frequently executed feature.
+Verify the API documentation (Swagger) is accurate	Manual	Documentation changes are reviewed manually.
+Smoke test to verify the API is reachable after deployment	Automate	Smoke tests run after every deployment and are ideal for automation.
+3. Automation ROI Calculation
+Given
+Automation development time = 4 hours
+Manual execution time = 30 minutes (0.5 hour)
+Automation maintenance cost = 20% after the 10th run
+Step 1
+
+Automation development cost
+
+= 4 hours
+
+Step 2
+
+Manual testing cost after N executions
+
+= 0.5 × N hours
+
+Step 3
+
+Break-even point
+
+4 ÷ 0.5
+
+= 8 runs
+
+Therefore, automation becomes more cost-effective after approximately 8 executions.
+
+Step 4
+
+Maintenance Cost
+
+After the 10th run,
+
+Maintenance = 20% of 4 hours
+
+= 0.8 hour
+
+Even with maintenance, automation remains more efficient than repeated manual execution over the long term.
+
+Conclusion
+
+Automation pays for itself after approximately 8 executions. Beyond this point, automated testing saves time, improves consistency, and reduces manual effort.
+
+4. Flaky Test
+Definition
+
+A flaky test is a test that produces inconsistent results without any changes to the application.
+
+The same test may pass during one execution and fail during another, even though the application behaves correctly.
+
+Example
+
+A Selenium login test immediately clicks the Login button before the page finishes loading.
+
+Sometimes the page loads quickly and the test passes.
+
+Sometimes the page loads slowly and the test fails with a NoSuchElementException or ElementNotInteractableException.
+
+Strategies to Prevent or Fix Flaky Tests
+Strategy 1: Use Explicit Waits
+
+Instead of fixed delays, wait until the required element becomes visible or clickable.
+
+This improves test reliability.
+
+Strategy 2: Use Stable Locators
+
+Prefer unique identifiers such as:
+
+id
+name
+data-testid
+
+Avoid fragile XPath expressions based on page layout.
+
+Strategy 3: Keep Test Data Independent
+
+Each test should create and use its own data instead of depending on data created by previous tests.
+
+This prevents failures caused by shared or modified data.
+
+Automation Test Lifecycle
+
+The Automation Test Lifecycle consists of the following stages:
+
+Requirement Analysis
+Test Planning
+Tool Selection
+Framework Design
+Test Script Development
+Test Execution
+Result Analysis
+Maintenance
+
+Each stage ensures that automated tests remain reliable, maintainable, and aligned with project requirements.
+
+Automation Framework Types
+1. Linear Framework
+
+Tests are executed sequentially from start to finish.
+
+Advantages
+
+Simple to create
+Suitable for small projects
+
+Disadvantages
+
+Difficult to maintain
+Code duplication
+2. Modular Framework
+
+Application is divided into reusable modules.
+
+Advantages
+
+Better code organization
+Easier maintenance
+
+Disadvantages
+
+Requires initial planning
+3. Data-Driven Framework
+
+Test data is stored separately in files such as Excel, CSV, or JSON.
+
+Advantages
+
+Reuse the same test with different inputs
+Reduces code duplication
+
+Disadvantages
+
+More complex implementation
+4. Keyword-Driven Framework
+
+Test execution is controlled using predefined keywords such as Click, Login, or Enter Text.
+
+Advantages
+
+Non-programmers can create test cases
+High reusability
+
+Disadvantages
+
+More complex framework setup
+5. Hybrid Framework
+
+Combines features of Modular, Data-Driven, and Keyword-Driven frameworks.
+
+Advantages
+
+Highly flexible
+Easy maintenance
+Scalable for large projects
+
+Disadvantages
+
+Higher initial development effort
+Conclusion
+
+Automation should be applied to repetitive, stable, regression, data-driven, and business-critical test cases. Manual testing remains essential for exploratory and documentation verification. Automation provides a positive return on investment after repeated executions and becomes increasingly beneficial for long-term projects. Selecting the appropriate automation framework improves test maintainability, scalability, and overall software quality.
+

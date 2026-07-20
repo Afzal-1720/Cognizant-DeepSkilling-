@@ -1,0 +1,199 @@
+QA Concepts, Functional Testing & Defect Lifecycle
+Task 1: Map Testing Types to a Real System
+1. Testing Levels
+Unit Testing
+
+Definition:
+Unit Testing verifies an individual function or method in isolation without interacting with external systems such as databases or APIs. It is usually performed by developers.
+
+Example Test Case:
+
+Scenario: Validate the course name before saving.
+Input: "Python Programming"
+Expected Result: The validation function returns True and accepts the course name.
+Integration Testing
+
+Definition:
+Integration Testing verifies that two or more components of an application work together correctly.
+
+Example Test Case:
+
+Scenario: Send a POST request to /api/courses with valid course details.
+Expected Result: The API stores the course information in the database and returns HTTP 201 Created.
+System Testing
+
+Definition:
+System Testing verifies the complete application by testing all integrated modules together.
+
+Example Test Case:
+
+Login as an administrator.
+Create a new course.
+Refresh the course list.
+Verify the newly created course appears.
+
+Expected Result:
+The entire workflow works successfully from login to database storage.
+
+User Acceptance Testing (UAT)
+
+Definition:
+User Acceptance Testing is performed by the end user to verify that the application meets business requirements.
+
+Example Test Case:
+A college administrator:
+
+Logs into the system.
+Creates a new course.
+Assigns a faculty member.
+Views the updated course list.
+
+Expected Result:
+The administrator is able to successfully manage courses according to business requirements.
+
+2. Functional vs Non-Functional Testing
+Functional Testing
+
+Definition:
+Functional Testing verifies whether the application performs the required business functions correctly.
+
+Examples:
+
+User Login
+Add Course
+Update Course
+Delete Course
+Search Course
+
+Example:
+Create a new course using the Course Management API.
+
+Expected Result:
+The course is successfully created and stored in the database.
+
+Non-Functional Testing
+
+Definition:
+Non-Functional Testing verifies how well the application performs rather than what it does.
+
+It focuses on:
+
+Performance
+Security
+Reliability
+Scalability
+Usability
+
+Example:
+Send 1000 API requests simultaneously.
+
+Expected Result:
+The server processes all requests successfully and responds within 2 seconds without crashing.
+
+3. Black-Box Testing vs White-Box Testing
+Black-Box Testing
+
+Black-Box Testing verifies the functionality of the software without knowing the internal source code. The tester provides inputs and verifies the outputs based on the requirements.
+
+Example:
+Enter valid login credentials and verify that the dashboard opens successfully.
+
+White-Box Testing
+
+White-Box Testing verifies the internal logic, code structure, and execution paths of the application. The tester has complete knowledge of the source code.
+
+Example:
+Testing the validation function that checks whether the course name is empty before saving it to the database.
+
+Difference Between Black-Box and White-Box Testing
+Black-Box Testing	White-Box Testing
+No knowledge of internal code	Complete knowledge of source code
+Tests functionality	Tests internal logic
+Performed mainly by QA testers	Performed mainly by developers
+Focuses on inputs and outputs	Focuses on code coverage and program flow
+
+QA testers generally perform Black-Box Testing, while developers mainly perform White-Box Testing.
+
+4. Formal Test Cases
+Test Case 1
+
+Test Case ID: TC_001
+
+Description: Create a new course with valid details.
+
+Preconditions:
+
+User is logged into the Course Management System.
+
+Test Steps:
+
+Open the Course Management page.
+Click Add Course.
+Enter valid course details.
+Click Save.
+
+Expected Result:
+The course is successfully created and displayed in the course list.
+
+Actual Result: ______________________
+
+Pass/Fail: ______________________
+
+Test Case 2
+
+Test Case ID: TC_002
+
+Description: Attempt to create a course without entering the course name.
+
+Preconditions:
+
+User is logged into the Course Management System.
+
+Test Steps:
+
+Open the Add Course page.
+Leave the Course Name field empty.
+Enter the remaining details.
+Click Save.
+
+Expected Result:
+The application displays the validation message "Course Name is required." and the course is not created.
+
+Actual Result: ______________________
+
+Pass/Fail: ______________________
+
+Test Case 3
+
+Test Case ID: TC_003
+
+Description: Attempt to create a duplicate course.
+
+Preconditions:
+
+A course named "Python Programming" already exists.
+
+Test Steps:
+
+Open the Add Course page.
+Enter the existing course name.
+Fill in the remaining details.
+Click Save.
+
+Expected Result:
+The application displays the error message "Course already exists." and does not create another course with the same name.
+
+Actual Result: ______________________
+
+Pass/Fail: ______________________
+
+Conclusion
+
+This document demonstrates:
+
+The four testing levels (Unit, Integration, System, and User Acceptance Testing).
+The difference between Functional and Non-Functional Testing.
+The difference between Black-Box and White-Box Testing.
+Three formal test cases for the POST /api/courses endpoint.
+
+This completes the requirements for Hands-On 1 – Task 1 (QA Concepts, Functional Testing & Defect Lifecycle).

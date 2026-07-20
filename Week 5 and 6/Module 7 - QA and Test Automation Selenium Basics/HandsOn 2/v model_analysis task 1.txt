@@ -1,0 +1,172 @@
+SDLC vs TDLC – V-Model & Agile QA Integration
+Task 1: V-Model Mapping
+1. V-Model Diagram
+
+The V-Model establishes a relationship between Software Development Life Cycle (SDLC) phases and their corresponding Testing Life Cycle (TDLC) phases.
+
+                    SDLC                          TDLC
+
+             Requirements               <------> Acceptance Testing
+
+             System Design              <------> System Testing
+
+         Architectural Design           <------> Integration Testing
+
+            Module Design               <------> Unit Testing
+
+                       \                     /
+                        \                   /
+                         \                 /
+                          \               /
+                            Coding
+
+In the V-Model, development activities are performed on the left side, coding is performed at the bottom, and the corresponding testing activities are performed on the right side. Every development phase has a matching testing phase.
+
+2. SDLC to TDLC Mapping with Test Artifacts
+Requirements Phase → Acceptance Testing
+
+Purpose:
+Business requirements are collected and analyzed.
+
+Test Artifact Produced:
+Acceptance Test Plan
+
+Description:
+The Acceptance Test Plan is prepared based on business requirements to ensure that the final product satisfies user expectations.
+
+System Design Phase → System Testing
+
+Purpose:
+Overall system architecture and functionality are designed.
+
+Test Artifact Produced:
+System Test Cases and System Test Plan
+
+Description:
+System test cases are prepared to verify the complete application after development.
+
+Architectural Design Phase → Integration Testing
+
+Purpose:
+The interaction between various modules is designed.
+
+Test Artifact Produced:
+Integration Test Plan
+
+Description:
+Integration test cases verify communication between different modules such as API, database, and user interface.
+
+Module Design Phase → Unit Testing
+
+Purpose:
+Individual modules and functions are designed.
+
+Test Artifact Produced:
+Unit Test Cases
+
+Description:
+Developers prepare unit test cases to verify individual methods and functions before integration.
+
+3. Entry and Exit Criteria
+Unit Testing
+Entry Criteria
+Module development is completed.
+Source code is available.
+Unit test cases are prepared.
+Exit Criteria
+All unit test cases are executed.
+All critical defects are fixed.
+Code coverage meets project standards.
+Integration Testing
+Entry Criteria
+Unit testing is completed successfully.
+Individual modules are integrated.
+Integration test cases are available.
+Exit Criteria
+All integration test cases are executed.
+Module interactions work correctly.
+No critical integration defects remain.
+System Testing
+Entry Criteria
+Integration testing is completed.
+Complete application is deployed in the testing environment.
+System test cases are ready.
+Exit Criteria
+All planned system test cases are executed.
+No critical or high-severity defects remain.
+Application satisfies functional and non-functional requirements.
+Acceptance Testing
+Entry Criteria
+System testing is completed successfully.
+Application is stable.
+Business users are available for testing.
+Exit Criteria
+Users approve the application.
+Business requirements are satisfied.
+Product is ready for deployment.
+4. QA Engagement in the Course Management API Project
+
+Quality Assurance should participate throughout the Software Development Life Cycle rather than only during testing.
+
+QA Engagement Point 1 – Requirements Review
+
+During the requirements phase, QA reviews the requirements document to identify:
+
+Missing requirements
+Ambiguous statements
+Inconsistent business rules
+Testability of requirements
+
+Benefit:
+Finding defects early reduces development cost and prevents misunderstandings.
+
+QA Engagement Point 2 – Design Review
+
+During the design phase, QA reviews:
+
+System architecture
+Database design
+API specifications
+User interface flow
+
+QA also starts preparing:
+
+Test scenarios
+Test cases
+Test data
+
+Benefit:
+Potential issues are identified before coding begins, reducing rework later.
+
+Agile QA Integration
+
+In Agile methodology, QA is involved throughout every sprint rather than only after development.
+
+QA responsibilities include:
+
+Participating in sprint planning.
+Reviewing user stories.
+Writing test cases during development.
+Performing continuous testing.
+Reporting defects immediately.
+Supporting regression testing after every sprint.
+
+Continuous collaboration between developers, testers, and product owners helps deliver high-quality software quickly.
+
+Shift-Left Testing Principle
+
+Shift-Left Testing means starting testing activities as early as possible in the Software Development Life Cycle.
+
+Instead of waiting until development is complete, QA participates from the requirements and design phases.
+
+Advantages
+Early defect detection.
+Lower development cost.
+Better software quality.
+Faster delivery.
+Reduced rework.
+Improved collaboration between developers and testers.
+Conclusion
+
+The V-Model clearly maps each SDLC phase to its corresponding TDLC phase, ensuring testing activities are planned alongside development. By defining test artifacts, entry and exit criteria, and involving QA from the early stages through Shift-Left Testing and Agile practices, software quality is improved while reducing defects and project costs.
+

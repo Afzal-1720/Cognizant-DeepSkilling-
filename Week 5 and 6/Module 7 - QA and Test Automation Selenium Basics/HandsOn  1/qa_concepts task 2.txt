@@ -1,0 +1,173 @@
+Task 2: Defect Lifecycle & Severity Classification
+1. Defect Lifecycle
+
+A defect (bug) goes through several stages before it is resolved. The defect lifecycle ensures that every reported issue is tracked and managed efficiently.
+
+Defect Lifecycle Stages
+
+1. New
+
+The tester identifies a defect and reports it in the bug tracking system.
+
+2. Assigned
+
+The defect is assigned to a developer for investigation and fixing.
+
+3. Open
+
+The developer reviews the defect and starts working on the fix.
+
+4. Fixed
+
+The developer fixes the defect and marks it as fixed.
+
+5. Retest
+
+The QA tester retests the application using the same steps to verify that the defect has been fixed.
+
+6. Verified
+
+The tester confirms that the defect has been fixed successfully and no longer exists.
+
+7. Closed
+
+The defect is marked as closed after successful verification.
+Additional States
+
+Rejected
+
+The developer rejects the defect because it is not a valid bug, cannot be reproduced, or is working as intended.
+
+Deferred
+
+The defect is acknowledged but postponed to a future release because it is not critical or due to project constraints.
+2. Severity and Priority Classification
+Bug (a)
+
+Issue: POST /api/courses/ returns 500 Internal Server Error for all requests.
+
+Severity: Critical
+
+Priority: P1
+
+Justification:
+This defect completely prevents users from creating courses. It affects the core functionality of the application and must be fixed immediately.
+
+Bug (b)
+
+Issue: Course names longer than 150 characters are silently truncated without displaying an error.
+
+Severity: Medium
+
+Priority: P3
+
+Justification:
+The application still works, but user data may be lost because long course names are truncated. It should be fixed but is not business critical.
+
+Bug (c)
+
+Issue: The /docs Swagger page contains a typo in the API description.
+
+Severity: Low
+
+Priority: P4
+
+Justification:
+The typo does not affect application functionality. It only impacts documentation and can be fixed in a future update.
+
+Bug (d)
+
+Issue: Login with correct credentials occasionally returns 401 Unauthorized on the first attempt (intermittent).
+
+Severity: High
+
+Priority: P1
+
+Justification:
+Although the issue occurs intermittently, it affects user authentication and may prevent users from accessing the application. Since login is a critical feature, it requires immediate attention.
+
+3. Defect Report
+Defect ID
+
+BUG-001
+
+Title
+
+POST /api/courses/ returns 500 Internal Server Error while creating a new course.
+
+Environment
+Operating System: Windows 11
+Browser: Google Chrome (Latest Version)
+Application: Course Management API
+Environment: Test
+Build Version
+
+Version 1.0.0
+
+Severity
+
+Critical
+
+Priority
+
+P1
+
+Steps to Reproduce
+Open the Course Management application.
+Navigate to the Create Course page.
+Enter valid course details.
+Click the Save button.
+Observe the response.
+Expected Result
+
+The application should successfully create the course and return HTTP Status 201 Created.
+
+Actual Result
+
+The application returns HTTP Status 500 Internal Server Error, and the course is not created.
+
+Attachments
+
+Screenshot showing the 500 Internal Server Error.
+
+4. Difference Between Severity and Priority
+Severity
+
+Severity indicates how serious the defect is and how much it affects the application's functionality.
+
+Examples:
+
+Application crash
+Login failure
+Database corruption
+Priority
+
+Priority indicates how urgently the defect should be fixed based on business needs.
+
+Examples:
+
+Company logo missing on the home page
+Typographical errors on the landing page
+Broken promotional banner
+High Severity but Low Priority Example
+
+An Admin Report Export feature crashes when generating reports.
+
+Severity: High (because the feature does not work)
+Priority: Low (because very few users use this feature, and it is not required immediately)
+Low Severity but High Priority Example
+
+The company logo is missing from the login page one day before a product launch.
+
+Severity: Low (it does not affect functionality)
+Priority: High (it impacts the company's branding and public image, so it must be fixed immediately)
+Conclusion
+
+This document explains:
+
+The complete Defect Lifecycle.
+Severity and Priority classification for different defects.
+A sample defect report using standard QA fields.
+The difference between Severity and Priority with practical examples.
+
+This completes the requirements for Hands-On 1 – Task 2: Defect Lifecycle & Severity Classification.

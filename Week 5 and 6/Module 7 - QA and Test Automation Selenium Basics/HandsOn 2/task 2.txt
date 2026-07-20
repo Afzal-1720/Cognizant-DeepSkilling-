@@ -1,0 +1,207 @@
+Task 2: Agile QA and Shift-Left Testing
+1. Problems with Waterfall Testing
+
+In the traditional Waterfall model, testing begins only after the development phase is completed. This approach can create several problems for the Course Management API project.
+
+Problem 1: Late Detection of Defects
+
+Since testing starts after development, defects are identified very late in the project.
+
+Example:
+If the course creation API has a validation bug, it is discovered only after the entire module has been developed.
+
+Impact:
+
+Increased fixing cost
+Additional development effort
+Project delays
+Problem 2: Expensive Rework
+
+If requirements are misunderstood during development, major code changes may be required after testing.
+
+Example:
+Suppose the requirement states that every course must have a unique course code, but this validation was not implemented.
+
+Impact:
+
+Database changes
+API modifications
+Frontend updates
+Increased project cost
+Problem 3: Delayed Product Delivery
+
+Developers complete all modules before QA starts testing.
+
+If many defects are found, developers must fix them all at once, delaying the release.
+
+Impact:
+
+Longer testing cycle
+Delayed product delivery
+Reduced customer satisfaction
+2. QA Role in Agile Ceremonies
+
+Unlike Waterfall, Agile involves QA throughout every sprint.
+
+Sprint Planning
+
+QA Responsibilities:
+
+Review user stories.
+Clarify requirements.
+Define acceptance criteria.
+Estimate testing effort.
+Identify possible risks.
+
+Example:
+For the Course Management API, QA verifies the acceptance criteria for the "Create Course" feature before development begins.
+
+Daily Stand-up
+
+QA Responsibilities:
+
+Share testing progress.
+Report blockers.
+Discuss open defects.
+Coordinate with developers regarding bug fixes.
+
+Example:
+QA reports that course creation fails when the course code already exists.
+
+Sprint Review
+
+QA Responsibilities:
+
+Verify completed features.
+Demonstrate tested functionality.
+Confirm acceptance criteria are satisfied.
+Provide quality feedback to stakeholders.
+
+Example:
+QA demonstrates that the Create Course API works correctly using valid and invalid test data.
+
+Sprint Retrospective
+
+QA Responsibilities:
+
+Discuss testing challenges.
+Suggest process improvements.
+Recommend automation opportunities.
+Improve collaboration between developers and testers.
+
+Example:
+QA suggests adding automated API tests to reduce manual regression testing in future sprints.
+
+3. Shift-Left Testing Practices
+
+Shift-Left Testing means beginning testing activities as early as possible in the Software Development Life Cycle.
+
+Practice 1: Review Requirements for Testability
+
+QA reviews requirements before development starts.
+
+Application to Course Management API:
+Verify that requirements clearly define:
+
+Mandatory course fields
+Maximum course name length
+Duplicate course code validation
+Error messages
+
+Benefit:
+Ambiguous requirements are corrected before coding begins.
+
+Practice 2: Write Test Cases Before Coding (TDD/BDD)
+
+QA prepares test scenarios before developers begin implementation.
+
+Example Test Cases:
+
+Create course with valid details.
+Create course without course name.
+Create duplicate course.
+Create course with invalid duration.
+
+Benefit:
+Developers clearly understand expected behavior before writing code.
+
+Practice 3: Static Code Analysis
+
+Developers use static analysis tools to identify coding issues before execution.
+
+Examples:
+
+SonarQube
+Pylint
+Flake8
+
+Benefit:
+Detects code quality issues, security vulnerabilities, and coding standard violations early.
+
+Practice 4: API Contract Testing Before Integration
+
+QA verifies that APIs follow the agreed contract before frontend and backend integration.
+
+Example:
+Ensure the Create Course API accepts the correct request format and returns expected HTTP status codes and JSON responses.
+
+Benefit:
+Prevents integration failures between frontend and backend systems.
+
+4. Acceptance Criteria (Given-When-Then Format)
+Scenario 1 – Happy Path
+
+User Story:
+As a college administrator, I want to create a new course so that students can enroll in it.
+
+Given
+
+The administrator is logged into the Course Management System.
+The course details are valid.
+
+When
+
+The administrator submits the Create Course form.
+
+Then
+
+The course is successfully created.
+A success message is displayed.
+The course appears in the course list.
+Scenario 2 – Duplicate Course Code
+
+Given
+
+A course with code CS101 already exists.
+
+When
+
+The administrator attempts to create another course using CS101.
+
+Then
+
+The application displays the message "Course code already exists."
+The new course is not created.
+Scenario 3 – Missing Required Fields
+
+Given
+
+The administrator opens the Create Course page.
+
+When
+
+The administrator submits the form without entering the course name.
+
+Then
+
+The application displays the validation message "Course Name is required."
+The course is not created.
+Conclusion
+
+Agile integrates QA throughout the development process, enabling continuous testing and collaboration. Shift-Left Testing helps detect defects early by involving QA during requirements analysis, test design, code reviews, and API contract validation. Using Given-When-Then acceptance criteria ensures that requirements are clear, testable, and aligned with business expectations.
+
+✅ This document covers all the workbook requirements:
+✔ Three problems with Waterfall testing
+✔ QA responsibilities in all four Agile ceremonies
+✔ Four Shift-Left testing practices applied to the Course Management API
+✔ Three Given-When-Then (Gherkin) acceptance criteria scenarios (Happy Path, Duplicate Course Code, Missing Required Fields)

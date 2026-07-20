@@ -1,0 +1,200 @@
+Task 2: Compare Automation Framework Types
+1. Linear Framework
+Description
+
+The Linear Framework, also known as the Record-and-Playback Framework, is the simplest automation framework. Test scripts are written sequentially, where each step is executed one after another without using reusable components. It is suitable for small projects with a limited number of test cases.
+
+Advantage
+Simple to develop and easy to understand.
+Disadvantage
+Difficult to maintain because code is duplicated across multiple test scripts.
+Example
+
+For the Course Management System, a Linear Framework can automate a simple login test where the script opens the browser, enters credentials, clicks the login button, and verifies successful login.
+
+2. Modular Framework
+Description
+
+The Modular Framework divides the application into separate modules such as Login, Course Management, Student Management, and Dashboard. Each module has reusable automation scripts that can be called from multiple test cases.
+
+Advantage
+High code reusability and easier maintenance.
+Disadvantage
+Requires proper planning and application design before implementation.
+Example
+
+Create separate modules for Login, Create Course, Edit Course, and Delete Course. These modules can be reused across different test scenarios.
+
+3. Data-Driven Framework
+Description
+
+In the Data-Driven Framework, test data is stored separately from the automation scripts in files such as Excel, CSV, JSON, or XML. The same test script is executed multiple times using different input data.
+
+Advantage
+The same test script can validate multiple input combinations without changing the code.
+Disadvantage
+Managing external data files increases framework complexity.
+Example
+
+Store multiple username-password combinations in an Excel or CSV file and execute the Login test for each combination automatically.
+
+4. Keyword-Driven Framework
+Description
+
+The Keyword-Driven Framework uses predefined keywords such as Login, Click, Enter Text, and Logout to perform test actions. Test cases are created using these keywords, allowing non-programmers to contribute to test creation.
+
+Advantage
+Easy for non-technical testers to understand and use.
+Disadvantage
+Framework development and keyword maintenance require additional effort.
+Example
+
+A test case may contain keywords like:
+
+Open Browser
+Login
+Click Add Course
+Enter Course Details
+Save Course
+Verify Success Message
+5. Hybrid Framework
+Description
+
+The Hybrid Framework combines the advantages of Modular, Data-Driven, and Keyword-Driven frameworks. It provides reusable modules, supports external test data, and allows keyword abstraction where necessary. This is the most commonly used framework in real-world automation projects.
+
+Advantage
+Highly scalable, reusable, and easy to maintain.
+Disadvantage
+Initial framework setup requires more time and planning.
+Example
+
+The Course Management System uses:
+
+Page Object Model for reusable pages
+CSV or Excel files for test data
+Utility functions for common operations
+Reusable login and course management modules
+2. Recommended Framework for the Given Scenario
+Scenario
+
+The team is building a Selenium test suite for the Course Management frontend. They need to:
+
+Test login with 50 different username/password combinations.
+Reuse login steps across 20 test cases.
+Support both technical and non-technical team members.
+Build a scalable and maintainable automation solution.
+Recommended Framework
+
+Hybrid Framework
+
+Justification
+
+A Hybrid Framework is the best choice because it combines the strengths of multiple framework types.
+
+The Modular Framework allows reusable login, dashboard, and course management modules.
+The Data-Driven Framework enables testing with 50 different username/password combinations using external data files.
+The Keyword-Driven Framework allows non-technical team members to create or understand test cases using predefined keywords.
+The framework is highly maintainable, scalable, and suitable for large Selenium automation projects.
+
+Therefore, a Hybrid Framework provides the flexibility and maintainability required for the Course Management System.
+
+3. Hybrid Framework Folder Structure
+CourseManagementAutomation/
+
+│
+├── config/
+│   ├── config.py
+│   ├── settings.json
+│
+├── test_data/
+│   ├── login_data.csv
+│   ├── course_data.csv
+│
+├── pages/
+│   ├── login_page.py
+│   ├── dashboard_page.py
+│   ├── course_page.py
+│
+├── tests/
+│   ├── test_login.py
+│   ├── test_create_course.py
+│   ├── test_edit_course.py
+│   ├── test_delete_course.py
+│
+├── utilities/
+│   ├── driver_factory.py
+│   ├── logger.py
+│   ├── screenshot.py
+│   ├── read_data.py
+│
+├── reports/
+│   ├── test_report.html
+│
+├── screenshots/
+│
+├── requirements.txt
+│
+└── README.md
+Folder Description
+config/
+
+Stores application configuration files such as browser settings, URLs, and environment details.
+
+test_data/
+
+Contains external test data files such as CSV, Excel, or JSON used in Data-Driven Testing.
+
+Examples:
+
+Login credentials
+Course details
+pages/
+
+Contains Page Object Model (POM) classes representing each web page.
+
+Examples:
+
+Login Page
+Dashboard Page
+Course Page
+tests/
+
+Contains Selenium test scripts that call the Page Object classes to perform automation.
+
+Examples:
+
+Login Test
+Create Course Test
+Delete Course Test
+utilities/
+
+Contains reusable helper functions such as:
+
+WebDriver initialization
+Reading test data
+Logging
+Screenshot capture
+reports/
+
+Stores generated automation reports after test execution.
+
+screenshots/
+
+Stores screenshots captured automatically whenever a test fails.
+
+requirements.txt
+
+Contains all required Python libraries.
+
+Example:
+
+selenium
+pytest
+webdriver-manager
+README.md
+
+Contains project setup instructions, framework usage, and execution steps.
+
+Conclusion
+
+Each automation framework has its own strengths and limitations. The Linear Framework is suitable for small projects, while Modular and Data-Driven Frameworks improve reusability and flexibility. Keyword-Driven Frameworks allow non-technical users to participate in test creation. For enterprise-level applications such as the Course Management System, a Hybrid Framework is the most suitable choice because it combines reusability, scalability, maintainability, and data-driven testing in a single solution.
