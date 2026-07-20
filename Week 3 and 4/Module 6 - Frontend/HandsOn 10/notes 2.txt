@@ -1,0 +1,42 @@
+React + Redux Toolkit
+---------------------
+
+• Uses createSlice
+
+• Uses createAsyncThunk
+
+• Large ecosystem
+
+• Moderate boilerplate
+
+• Easy DevTools
+
+
+
+Angular + NgRx
+--------------
+
+• Follows Redux architecture
+
+• Uses Actions, Reducers, Effects
+
+• Best for enterprise applications
+
+• More boilerplate
+
+• Excellent Angular integration
+
+
+
+Vue + Pinia
+-----------
+
+• Simple API
+
+• Minimal boilerplate
+
+• Excellent Composition API support
+
+• Very easy to learn
+
+• Official Vue state management

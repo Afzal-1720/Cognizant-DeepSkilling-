@@ -60,23 +60,42 @@ const sortButton = document.querySelector("#sort-btn");
 const selectedCourse = document.querySelector("#selected-course");
 
 /* ==========================================
+   HANDS-ON 9
+   Accessibility Elements
+========================================== */
+
+const resultCount = document.querySelector("#resultCount");
+
+/* ==========================================
+   Function : Render Courses
+========================================== */
+
+/* ==========================================
    Function : Render Courses
 ========================================== */
 
 function renderCourses(courseList) {
 
-    // Clear existing cards
     courseGrid.innerHTML = "";
 
-    // Create cards
     courseList.forEach(course => {
 
         const card = document.createElement("article");
 
         card.className = "course-card";
 
-        // Store course id
         card.dataset.id = course.id;
+
+        /* STEP 129 */
+
+        card.setAttribute("tabindex", "0");
+
+        card.setAttribute("role", "button");
+
+        card.setAttribute(
+            "aria-label",
+            `${course.name} course`
+        );
 
         card.innerHTML = `
             <h3>${course.name}</h3>
@@ -88,20 +107,41 @@ function renderCourses(courseList) {
             <p><strong>Grade:</strong> ${course.grade}</p>
         `;
 
+        /* Keyboard Support */
+
+        card.addEventListener("keydown", function (event) {
+
+            if (event.key === "Enter") {
+
+                card.click();
+
+            }
+
+        });
+
         courseGrid.appendChild(card);
 
     });
 
-    // Calculate total credits
+    /* Update total credits */
+
     const total = courseList.reduce(
+
         (sum, course) => sum + course.credits,
+
         0
+
     );
 
     totalCreditsText.textContent =
         `Total Credits Enrolled : ${total}`;
-}
 
+    /* STEP 130 */
+
+    resultCount.textContent =
+        `${courseList.length} courses found`;
+
+}
 /* ==========================================
    Initial Rendering
 ========================================== */
@@ -114,11 +154,17 @@ renderCourses(courses);
 
 searchInput.addEventListener("input", () => {
 
-    const searchText = searchInput.value.toLowerCase();
+    const searchText =
+        searchInput.value.toLowerCase();
 
-    const filtered = courses.filter(course =>
-        course.name.toLowerCase().includes(searchText)
-    );
+    const filtered =
+        courses.filter(course =>
+
+            course.name
+                .toLowerCase()
+                .includes(searchText)
+
+        );
 
     renderCourses(filtered);
 

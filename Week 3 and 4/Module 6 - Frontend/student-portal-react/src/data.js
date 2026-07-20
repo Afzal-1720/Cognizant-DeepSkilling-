@@ -1,4 +1,4 @@
-const courseData = [
+const courses = [
 
     {
         id:1,
@@ -21,25 +21,25 @@ const courseData = [
         name:"Database Systems",
         code:"CS103",
         credits:4,
-        grade:"B+"
+        grade:"B"
     },
 
     {
         id:4,
-        name:"Web Development",
+        name:"Operating Systems",
         code:"CS104",
-        credits:3,
+        credits:4,
         grade:"A"
     },
 
     {
         id:5,
-        name:"Operating Systems",
+        name:"Web Development",
         code:"CS105",
-        credits:4,
-        grade:"A"
+        credits:3,
+        grade:"A+"
     }
 
 ];
 
-export default courseData;
+export default courses;

@@ -1,13 +1,42 @@
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+
+import { enroll } from "../redux/enrollmentSlice";
+
 function CourseCard({
 
     id,
     name,
     code,
     credits,
-    grade,
-    onEnroll
+    grade
 
 }) {
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+
+    function handleEnroll() {
+
+        dispatch(
+
+            enroll({
+
+                id,
+                name,
+                code,
+                credits,
+                grade
+
+            })
+
+        );
+
+        navigate("/profile");
+
+    }
 
     return (
 
@@ -21,19 +50,15 @@ function CourseCard({
 
             <p>Grade : {grade}</p>
 
-            <button
+            <Link to={`/courses/${id}`}>
 
-                onClick={() =>
-                    onEnroll({
-                        id,
-                        name,
-                        code,
-                        credits,
-                        grade
-                    })
-                }
+                View Details
 
-            >
+            </Link>
+
+            <br /><br />
+
+            <button onClick={handleEnroll}>
 
                 Enroll
 

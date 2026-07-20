@@ -1,0 +1,33 @@
+/*
+NgRx Data Flow
+
+Component
+
+↓
+
+Dispatch Action
+
+↓
+
+Effect
+
+↓
+
+API
+
+↓
+
+Reducer
+
+↓
+
+Store
+
+↓
+
+Selector
+
+↓
+
+Component
+*/
